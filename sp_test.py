@@ -1,33 +1,25 @@
 import sys
-import json
 import spotipy
-import spotipy.util as util
-from xlwt import Workbook
 from matplotlib import pyplot as plt
 import pandas as pd
 
 client_secret = '6a112ea19cc04a64b18164c1218198cb'
 client_id = 'ac16b07b2e97494eab56f93868924969'
 redirect_uri = 'http://google.com/'
-#jrudder3901?si=A24PLpKZQcWb-kbr52YNB
-#jrudder3901?si=9_2TxySQRTeiIZcLatcagQ\
-#jrudder3901?si=MxS7RVG_QveTROaKfqW_-A
 
 songs_list = []
 artists_list = []
 pop_list = []
 color_list = []
 
-wb = Workbook()
 row = 0
-sheet = wb.add_sheet('Spotipy Sheet')
-    
 
-def show_tracks(tracks):
-    for i, item in enumerate(tracks['items']):
-        track = item['track']
-        print(" %d %32.32s %s" % (i, track['artists'][0]['name'],track['name']))
-
+"""
+exit_func gathers lists about listened to songs
+and places it into a dataframe and color
+coded graph. Also exits the shell running
+the script.
+"""
 def exit_func():
     d = {'name':songs_list,
          'artist':artists_list,
@@ -37,7 +29,7 @@ def exit_func():
     print(df)
     plt.scatter(x=songs_list, y=pop_list, cmap=color_list,vmin=0,vmax=100)
     plt.show()
-    sys.exit()
+    exit()
 
 
 if __name__ == '__main__':
@@ -49,7 +41,7 @@ if __name__ == '__main__':
         sys.exit()
 
     scope = 'user-read-currently-playing'
-    token = util.prompt_for_user_token(username, scope=scope, client_id=client_id, client_secret=client_secret, redirect_uri=redirect_uri)
+    token = spotipy.util.prompt_for_user_token(username, scope=scope, client_id=client_id, client_secret=client_secret, redirect_uri=redirect_uri)
 
     if token:
         song_current = ''
