@@ -12,8 +12,6 @@ artists_list = []
 pop_list = []
 color_list = []
 
-row = 0
-
 """
 exit_func gathers lists about listened to songs
 and places it into a dataframe and color
@@ -86,7 +84,6 @@ if __name__ == '__main__':
                     color_list.append([0,255,0])
                 else:
                     color_list.append([255,0,0])
-                row+=1
                 print(song_current)
                 print('----------------------------------------')
                 #print('would you like to stop? (y/n)')
