@@ -81,9 +81,9 @@ if __name__ == '__main__':
                 artists_list.append(artist_name)
                 pop_list.append(popularity)
                 if popularity > 50:
-                    color_list.append([0,255,0])
+                    color_list.append([0,1,0])
                 else:
-                    color_list.append([255,0,0])
+                    color_list.append([1,0,0])
                 print(song_current)
                 print('----------------------------------------')
                 #print('would you like to stop? (y/n)')
