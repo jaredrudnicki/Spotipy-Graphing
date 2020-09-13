@@ -26,6 +26,7 @@ def exit_func():
     df=pd.DataFrame(d)
     print(df)
     plt.scatter(x=songs_list, y=pop_list, cmap=color_list,vmin=0,vmax=100)
+    plt.xticks(rotation=60)
     plt.show()
     exit()
 
